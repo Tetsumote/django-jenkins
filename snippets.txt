@@ -1,0 +1,15 @@
+https://www.jenkins.io/doc/book/installing/macos/
+https://www.macminivault.com/installing-jenkins-on-macos/
+
+brew install java11
+
+If you need to have openjdk@11 first in your PATH, run:
+  echo 'export PATH="/usr/local/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find openjdk@11 you may need to set:
+  export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
+
+brew services start jenkins-lts
+brew services restart jenkins-lts
+
+/usr/local/opt/openjdk@17/bin/java -Dmail.smtp.starttls.enable=true -jar /usr/local/opt/jenkins-lts/libexec/jenkins.war --httpListenAddress=127.0.0.1 --httpPort=8080
